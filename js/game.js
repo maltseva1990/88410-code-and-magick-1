@@ -589,9 +589,9 @@ window.Game = (function () {
            * @return {Verdict}
            */
           function (state) {
-                var me = state.objects.filter(function (object) {
-                return object.type === ObjectType.ME;
-              })[0];
+            var me = state.objects.filter(function (object) {
+              return object.type === ObjectType.ME;
+            })[0];
 
             return me.state === ObjectState.DISPOSED ?
               Verdict.FAIL :
@@ -611,11 +611,12 @@ window.Game = (function () {
            * Игра прекращается если игрок продолжает играть в нее два часа подряд.
            * @param {Object} state
            * @return {Verdict}
-           */function (state) {
-                return Date.now() - state.startTime > 3 * 60 * 1000 ?
+           */
+          function (state) {
+            return Date.now() - state.startTime > 3 * 60 * 1000 ?
               Verdict.FAIL :
               Verdict.CONTINUE;
-              }
+          }
         ];
       }
 
