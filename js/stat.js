@@ -32,8 +32,8 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     ctx.fillStyle = '#000';
-    ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height );
-    if ( name === 'Вы') {
+    ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
+    if (name === 'Вы') {
       ctx.fillStyle = '#FF0000';
       ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
       ctx.fillStyle = '#000';
