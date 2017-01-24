@@ -44,8 +44,8 @@ window.renderStatistics = function (ctx, names, times) {
     var fillText = function () {
       ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
     };
-    ctx.fillText(time1.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height );
-    if ( name === 'Вы') {
+    ctx.fillText(time1.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
+    if (name === 'Вы') {
       ctx.fillStyle = '#FF0000';
       fillRect();
       fillStyle();
