@@ -36,7 +36,7 @@ window.renderStatistics = function (ctx, names, times) {
       fillColor = '#FF0000';
 
     } else {
-      var color = ((Math.random()*5)*50).toFixed();
+      var color = ((Math.random() * 5) * 50).toFixed();
       var opacity = Math.random().toFixed(1);
       fillColor = 'rgba(0,0,' + color + ', ' + opacity + ')';
     }
