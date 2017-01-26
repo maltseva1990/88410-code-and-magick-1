@@ -34,17 +34,16 @@ window.renderStatistics = function (ctx, names, times) {
 
     if (name === 'Вы') {
       fillColor = '#FF0000';
-      // fillColor = '#000';
 
     } else {
-      var color = Math.floor(Math.random());
-      var opacity = Math.random(0.2).toFixed(1);
+      var color = ((Math.random()*5)*50).toFixed();
+      var opacity = Math.random().toFixed(1);
       fillColor = 'rgba(0,0,' + color + ', ' + opacity + ')';
-      // fillColor = 'black';
     }
 
     ctx.fillStyle = fillColor;
     ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
+    ctx.fillStyle = 'black';
     ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
   }
 };
