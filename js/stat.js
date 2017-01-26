@@ -2,23 +2,19 @@
 
 window.renderStatistics = function (ctx, names, times) {
 
-  var drawCloud = function () {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-    ctx.fillRect(110, 20, 420, 270);
-
-    ctx.fillStyle = 'rgba(256, 256, 256, 1.0)';
-    ctx.fillRect(100, 10, 420, 270);
+  var drawCloud = function (color, x, y, width, height) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
   };
 
-  drawCloud();
+  drawCloud('rgba(0, 0, 0, 0.7)', 110, 20, 420, 270);
+  drawCloud('white', 100, 10, 420, 270);
 
   ctx.fillStyle = 'black';
   ctx.font = '16px PT Mono';
 
   ctx.fillText('Ура вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
-
-// поиск максимального значения с помошью Math.max
 
   var max = Math.max.apply(null, times);
   var histoHeight = 150;
@@ -29,33 +25,26 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < times.length; i++) {
 
     var name = names[i];
-    var time1 = times[i];
-    var height = step * time1;
+    var time = times[i];
+    var height = step * time;
 
-    // вынесены одинаковые строки
+    var fillColor;
 
-    var fillRect = function () {
-      ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
-    };
-    var fillStyle = function () {
-      ctx.fillStyle = '#000';
-    };
+    ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
 
-    var fillText = function () {
-      ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
-    };
-    ctx.fillText(time1.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
     if (name === 'Вы') {
-      ctx.fillStyle = '#FF0000';
-      fillRect();
-      fillStyle();
-      fillText();
+      fillColor = '#FF0000';
+      // fillColor = '#000';
+
     } else {
-      var color = Math.floor(Math.random() * 244);
-      ctx.fillStyle = 'rgba(0,0,' + color + ', ' + Math.random() + ')';
-      fillRect();
-      fillStyle();
-      fillText();
+      var color = Math.floor(Math.random());
+      var opacity = Math.random(0.2).toFixed(1);
+      fillColor = 'rgba(0,0,' + color + ', ' + opacity + ')';
+      // fillColor = 'black';
     }
+
+    ctx.fillStyle = fillColor;
+    ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
+    ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
   }
 };
