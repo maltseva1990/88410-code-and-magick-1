@@ -1,3 +1,5 @@
+'use strict';
+
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
@@ -17,19 +19,19 @@ setupClose.addEventListener('click', function () {
   setup.classList.add('invisible');
 });
 
-wizardCoat.addEventListener('click', function() {
+wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = wizardCoatColors[
     Math.floor(Math.random() * wizardCoatColors.length)
     ];
 });
 
-wizarEyes.addEventListener('click', function() {
+wizarEyes.addEventListener('click', function () {
   wizarEyes.style.fill = wizardEyesColors [
     Math.floor(Math.random() * wizardEyesColors .length)
     ];
 });
 
-fireballWrap.addEventListener('click', function() {
+fireballWrap.addEventListener('click', function () {
   fireballWrap.style.background = wizardFireballColors [
     Math.floor(Math.random() * wizardFireballColors .length)
     ];
