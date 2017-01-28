@@ -32,8 +32,6 @@ var wizardFireballColors = [
 var nameField = document.querySelector('.setup-user-name');
 nameField.required = true;
 nameField.maxLength = 50;
-nameField.value = 'Синий Пендальф';
-nameField.type = 'text';
 
 var getRandom = function (min, max) {
   return Math.floor((Math.random() * (max - min) + min));
