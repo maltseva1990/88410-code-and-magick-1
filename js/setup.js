@@ -35,7 +35,9 @@ nameField.maxLength = 50;
 nameField.value = 'Синий Пендальф';
 nameField.type = 'text';
 
-var getRandom = function (min, max) {return Math.floor((Math.random() * (max - min) + min));}
+var getRandom = function (min, max) {
+  return Math.floor((Math.random() * (max - min) + min));
+};
 
 setupOpen.addEventListener('click', function () {
   setup.classList.remove('invisible');
@@ -46,13 +48,13 @@ setupClose.addEventListener('click', function () {
 });
 
 wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill = wizardCoatColors[getRandom(0,5)];
+  wizardCoat.style.fill = wizardCoatColors[getRandom(0, 5)];
 });
 
 wizarEyes.addEventListener('click', function () {
-  wizarEyes.style.fill = wizardEyesColors [getRandom(0,5)];
+  wizarEyes.style.fill = wizardEyesColors [getRandom(0, 5)];
 });
 
 fireballWrap.addEventListener('click', function () {
-  fireballWrap.style.background = wizardFireballColors [getRandom(0,5)];
+  fireballWrap.style.background = wizardFireballColors [getRandom(0, 5)];
 });
