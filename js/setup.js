@@ -20,7 +20,7 @@ var setupKeydownHandler = function (evt) {
 var showSetupElement = function () {
   setupOverlay.classList.remove('invisible');
   document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ESCAPE_KEY_CODE ) {
+    if (evt.keyCode === ESCAPE_KEY_CODE) {
       setupOverlay.classList.add('invisible');
     }
   });
