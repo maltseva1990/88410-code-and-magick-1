@@ -11,8 +11,12 @@ var isActivateEvent = function (evt) {
   return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
 };
 
+var isDiactivateEvent = function (evt) {
+  return evt.keyCode && evt.keyCode === ESCAPE_KEY_CODE;
+};
+
 var setupKeydownHandler = function (evt) {
-  if (evt.keyCode === ESCAPE_KEY_CODE) {
+  if (isDiactivateEvent(evt)) {
     setupOverlay.classList.add('invisible');
   }
 };
@@ -20,7 +24,7 @@ var setupKeydownHandler = function (evt) {
 var showSetupElement = function () {
   setupOverlay.classList.remove('invisible');
   document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ESCAPE_KEY_CODE) {
+    if (isDiactivateEvent(evt)) {
       setupOverlay.classList.add('invisible');
     }
   });
