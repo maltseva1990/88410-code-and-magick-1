@@ -1,8 +1,42 @@
 'use strict';
 
 var setupOpen = document.querySelector('.setup-open');
-var setupOverlay = document.querySelector('.overlay');
-var setupClose = setupOverlay.querySelector('.setup-close');
+var setupOverlay = document.querySelector('.setup');
+var setupCloseOverlay = setupOverlay.querySelector('.setup-close');
+var wizard = document.querySelector('#wizard');
+var wizardCoat = wizard.querySelector('#wizard-coat');
+var wizardCoatColors = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
+];
+window.colorizeElement(wizardCoat, wizardCoatColors, 'fill');
+var wizarEyes = wizard.querySelector('#wizard-eyes');
+var wizardEyesColors = [
+  'black',
+  'red',
+  'blue',
+  'yellow',
+  'green'
+];
+window.colorizeElement(wizarEyes, wizardEyesColors, 'fill');
+var fireballWrap = document.querySelector('.setup-fireball-wrap');
+var wizardFireballColors = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
+window.colorizeElement(fireballWrap, wizardFireballColors, 'background');
+var nameField = document.querySelector('.setup-user-name');
+nameField.required = true;
+nameField.maxLength = 50;
+
 var saveBtn = document.querySelector('.button setup-submit');
 var ENTER_KEY_CODE = 13;
 var ESCAPE_KEY_CODE = 27;
@@ -45,11 +79,11 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
+setupCloseOverlay.addEventListener('click', function () {
   hideSetupElement();
 });
 
-setupClose.addEventListener('keydown', function (evt) {
+setupCloseOverlay.addEventListener('keydown', function (evt) {
   if (isActivateEvent(evt)) {
     hideSetupElement();
   }
@@ -64,3 +98,5 @@ saveBtn.addEventListener('click', function (evt) {
     hideSetupElement();
   }
 });
+
+
