@@ -7,18 +7,14 @@ window.colorizeElement = function (element, colors, property) {
     colorChange();
   });
 
-  element.addEventListener('keydown', function (e) {
-    if (e.keyCode === 13) {
+  element.addEventListener('keydown', function (evt) {
+    if (window.utils.isActivateEvent(evt)) {
       colorChange();
     }
   });
-  var colorChange = function () {
 
-    var newColor = null;
-    while (!newColor || newColor === currentColor) {
-      newColor = window.utils.getRandomElementExcept(colors, currentColor);
-    }
-    currentColor = newColor;
+  var colorChange = function () {
+    currentColor = window.utils.getRandomElementExcept(colors, currentColor);
     element.style[property] = currentColor;
   };
 };

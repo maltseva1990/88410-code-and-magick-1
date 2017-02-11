@@ -37,20 +37,10 @@ var nameField = document.querySelector('.setup-user-name');
 nameField.required = true;
 nameField.maxLength = 50;
 
-var saveBtn = document.querySelector('.button setup-submit');
-var ENTER_KEY_CODE = 13;
-var ESCAPE_KEY_CODE = 27;
-
-var isActivateEvent = function (evt) {
-  return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
-};
-
-var isDiactivateEvent = function (evt) {
-  return evt.keyCode && evt.keyCode === ESCAPE_KEY_CODE;
-};
+var saveBtn = document.querySelector('.setup-submit');
 
 var setupKeydownHandler = function (evt) {
-  if (isDiactivateEvent(evt)) {
+  if (window.utils.isDiactivateEvent(evt)) {
     setupOverlay.classList.add('invisible');
   }
 };
@@ -58,7 +48,7 @@ var setupKeydownHandler = function (evt) {
 var showSetupElement = function () {
   setupOverlay.classList.remove('invisible');
   document.addEventListener('keydown', function (evt) {
-    if (isDiactivateEvent(evt)) {
+    if (window.utils.isDiactivateEvent(evt)) {
       setupOverlay.classList.add('invisible');
     }
   });
@@ -74,7 +64,7 @@ setupOpen.addEventListener('click', function () {
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
-  if (isActivateEvent(evt)) {
+  if (window.utils.isActivateEvent(evt)) {
     showSetupElement();
   }
 });
@@ -84,7 +74,7 @@ setupCloseOverlay.addEventListener('click', function () {
 });
 
 setupCloseOverlay.addEventListener('keydown', function (evt) {
-  if (isActivateEvent(evt)) {
+  if (window.utils.isActivateEvent(evt)) {
     hideSetupElement();
   }
 });
@@ -93,8 +83,8 @@ saveBtn.addEventListener('click', function () {
   hideSetupElement();
 });
 
-saveBtn.addEventListener('click', function (evt) {
-  if (isActivateEvent(evt)) {
+saveBtn.addEventListener('keydown', function (evt) {
+  if (window.utils.isActivateEvent(evt)) {
     hideSetupElement();
   }
 });
