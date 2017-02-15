@@ -1,6 +1,6 @@
 'use strict';
 
-window.utils = (function(){
+window.utils = (function () {
   var ENTER_KEY_CODE = 13;
   var ESCAPE_KEY_CODE = 27;
 
@@ -20,7 +20,7 @@ window.utils = (function(){
   var getRandomElementExcept = function (array, colorValue) {
     var randomElement = null;
     while (!randomElement || randomElement === colorValue) {
-      randomElement = this.getRandomElement(array);
+      randomElement = getRandomElement(array);
     }
     return randomElement;
   };
