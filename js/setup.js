@@ -1,6 +1,6 @@
 'use strict';
 
-window.setup = (function() {
+window.setup = (function () {
   var setupOpen = document.querySelector('.setup-open');
   var setupOverlay = document.querySelector('.setup');
   var setupCloseOverlay = setupOverlay.querySelector('.setup-close');
