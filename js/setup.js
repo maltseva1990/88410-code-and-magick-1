@@ -4,6 +4,14 @@ window.setup = (function () {
   var setupOpen = document.querySelector('.setup-open');
   var setupOverlay = document.querySelector('.setup');
   var setupCloseOverlay = setupOverlay.querySelector('.setup-close');
+  var onSetupClose = null;
+  if (typeof onSetupClose === 'function') {
+    onSetupClose();
+  }
+  var fillColor = function (element, property, color) {
+    element.style[property] = color;
+  };
+
   var wizard = document.querySelector('#wizard');
   var wizardCoat = wizard.querySelector('#wizard-coat');
   var wizardCoatColors = [
@@ -14,7 +22,7 @@ window.setup = (function () {
     'rgb(215, 210, 55)',
     'rgb(0, 0, 0)'
   ];
-  window.colorizeElement(wizardCoat, wizardCoatColors, 'fill');
+  window.colorizeElement(wizardCoat, wizardCoatColors, 'fill', fillColor);
   var wizarEyes = wizard.querySelector('#wizard-eyes');
   var wizardEyesColors = [
     'black',
@@ -23,7 +31,7 @@ window.setup = (function () {
     'yellow',
     'green'
   ];
-  window.colorizeElement(wizarEyes, wizardEyesColors, 'fill');
+  window.colorizeElement(wizarEyes, wizardEyesColors, 'fill', fillColor);
   var fireballWrap = document.querySelector('.setup-fireball-wrap');
   var wizardFireballColors = [
     '#ee4830',
@@ -33,7 +41,7 @@ window.setup = (function () {
     '#e6e848'
   ];
 
-  window.colorizeElement(fireballWrap, wizardFireballColors, 'background');
+  window.colorizeElement(fireballWrap, wizardFireballColors, 'background', fillColor);
   var nameField = document.querySelector('.setup-user-name');
   nameField.required = true;
   nameField.maxLength = 50;
@@ -89,4 +97,13 @@ window.setup = (function () {
       hideSetupElement();
     }
   });
+  var focusOpenButton = function() {
+    setupOpen.focus();
+  };
+
+  var onSetupKeydown = function(evt) {
+    if (window.utils.isActivateEvent(evt)) {
+      window.enableSetup(focusOpenButton);
+    }
+  };
 })();
