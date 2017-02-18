@@ -24,7 +24,7 @@ window.enableSetup = (function () {
   };
 
   var onKeyDown = function (evt) {
-    if (window.utils.isActivationEvent(evt)) {
+    if (window.utils.isActivateEvent(evt)) {
       closeSetup();
     }
   };
