@@ -3,7 +3,7 @@
 window.colorizeElement = (function () {
 
   var currentColor = null;
-  return function (element, colors, property, callback) {
+  return function (element, colors, callback) {
     currentColor = colors[0];
     element.addEventListener('click', function () {
       colorChange();
@@ -14,10 +14,10 @@ window.colorizeElement = (function () {
         colorChange();
       }
     });
-    var colorChange = function () {
-      currentColor = window.utils.getRandomElementExcept(colors, currentColor);
+    var colorChange = function (event) {
+      var newColor = window.utils.getRandomElementExcept(colors, currentColor);
       if (typeof callback === 'function') {
-        callback(element, property, currentColor);
+        callback(element, newColor);
       }
     };
   };
