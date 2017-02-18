@@ -97,13 +97,15 @@ window.setup = (function () {
       hideSetupElement();
     }
   });
-  var focusOpenButton = function() {
+  var focusOpenButton = function () {
     setupOpen.focus();
   };
 
-  var onSetupKeydown = function(evt) {
+  var onSetupKeydown = function (evt) {
     if (window.utils.isActivateEvent(evt)) {
       window.enableSetup(focusOpenButton);
     }
   };
+  setupOpen.addEventListener('keydown', onSetupKeydown);
+  focusOpenButton();
 })();

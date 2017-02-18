@@ -1,13 +1,15 @@
-window.enableSetup = (function() {
+'use strict';
+
+window.enableSetup = (function () {
   var setup = document.querySelector('.setup');
   var setupClose = setup.querySelector('.setup-close');
   var onSetupClose = null;
 
-  var openSetup = function() {
+  var openSetup = function () {
     setup.classList.remove('invisible');
   };
 
-  var closeSetup = function() {
+  var closeSetup = function () {
     setup.classList.add('invisible');
     setupClose.removeEventListener('keydown', onKeyDown);
     setupClose.removeEventListener('keydown', onClick);
@@ -17,17 +19,17 @@ window.enableSetup = (function() {
     }
   };
 
-  var onClick = function() {
+  var onClick = function () {
     closeSetup();
   };
 
-  var onKeyDown = function(evt) {
+  var onKeyDown = function (evt) {
     if (window.utils.isActivationEvent(evt)) {
       closeSetup();
     }
   };
 
-  return function(cb) {
+  return function (cb) {
     openSetup();
     setupClose.addEventListener('keydown', onKeyDown);
     setupClose.addEventListener('keydown', onClick);
